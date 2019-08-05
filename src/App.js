@@ -17,8 +17,33 @@ const TodoData = [
   {
     task: 'Gardening',
     id: 12345,
+    completed: false
+  },
+  {
+    task: 'Cleaning room',
+    id: 123456,
     completed: true
-  }
+  },
+  {
+    task: 'Dog care',
+    id: 1234567,
+    completed: false
+  },
+  {
+    task: 'Reading book',
+    id: 12345678,
+    completed: false
+  },
+  {
+    task: 'Coding',
+    id: 123456789,
+    completed: false
+  },
+  {
+    task: 'Go to bank',
+    id: 1234567890,
+    completed: false
+  },
 ]
 
 
@@ -82,7 +107,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h2>Welcome to {this.state.name}'s Todo App!</h2>
+        <h1>Welcome to {this.state.name}'s Todo App!</h1>
         <TodoList 
         data = {this.state.Todo} 
         toggleTask = {this.toggleTask}
