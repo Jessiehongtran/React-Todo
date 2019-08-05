@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+
+.task.completed {
+    text-decoration: line-through;
+  }
