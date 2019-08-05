@@ -20,7 +20,6 @@ class TodoForm extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        console.log('event', event)
         this.props.data(this.state.task)
     }
 

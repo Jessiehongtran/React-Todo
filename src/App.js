@@ -68,7 +68,7 @@ class App extends React.Component {
 
   addTask =(taskName)=>{
     const newTask = {
-      name: taskName,
+      task: taskName,
       id: Date.now(),
       completed: false
     };
