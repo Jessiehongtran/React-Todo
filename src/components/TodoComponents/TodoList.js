@@ -12,7 +12,10 @@ const TodoList = props => {
             {props.data.map(task => (
                 <Todo key={task.id} data={task}/>
             ))}
+            <button>Clear Completed</button>
         </div>
+        
+
     )
 }
 
