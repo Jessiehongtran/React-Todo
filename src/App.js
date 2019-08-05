@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoList from "./components/TodoComponents/TodoList"
 import './components/TodoComponents/Todo.css';
+import TodoForm from "./components/TodoComponents/TodoForm"
 
 const TodoData = [
   {
@@ -75,6 +76,7 @@ class App extends React.Component {
         toggleTask = {this.toggleTask}
         clearCompleted = {this.clearCompleted}
         />
+        <TodoForm />
       </div>
     );
   }
