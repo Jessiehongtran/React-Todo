@@ -2,6 +2,7 @@ import React from 'react';
 import TodoList from "./components/TodoComponents/TodoList"
 import './components/TodoComponents/Todo.css';
 import TodoForm from "./components/TodoComponents/TodoForm"
+import Search from "./components/TodoComponents/Search"
 
 const TodoData = [
   {
@@ -57,7 +58,10 @@ class App extends React.Component {
     super();
     this.state = {
       name: 'Hong',
-      Todo : TodoData
+      Todo : TodoData, 
+      searchValue : '',
+      filteredList: [],
+      searching:false
     }
     console.log(this.state)
   }
@@ -79,6 +83,20 @@ class App extends React.Component {
         }
       }
        
+    ),
+      filteredList: this.state.filteredList.map(task => {
+        if (task.id === id) {
+          return {
+            ...task,
+
+            completed: !task.completed
+          }
+        }
+        else {
+          return task;
+        }
+      }
+       
     )
   })
   }
@@ -87,9 +105,13 @@ class App extends React.Component {
     console.log(test)
 
     this.setState({
-      Todo: this.state.Todo.filter(task => !task.completed)
+      Todo: this.state.Todo.filter(task => !task.completed),
+      filteredList: this.state.filteredList.filter(task => !task.completed)
     })
+    
   }
+
+
 
   addTask =(taskName)=>{
     const newTask = {
@@ -103,17 +125,52 @@ class App extends React.Component {
 
   }
 
+  handleSearchChange = (e) => { 
+    // this.setState({
+    //     [e.target.name]: e.target.value
+    // })
+    console.log('length', this.state.searchValue.length)
+    if(this.state.searchValue.length > 0) {
+      let filtered = this.state.Todo.filter(todo => todo.task.toLowerCase().includes(e.target.value.toLowerCase()))
+      this.setState({
+        searchValue: e.target.value,
+        filteredList: filtered
+      })
+    } else {
+      const filtered = []
+      this.setState({
+        searchValue: e.target.value,
+        filteredList: filtered
+      })
+    }
+    // console.log('filered todos', filtered)
+    
+  }
+
 
   render() {
+    console.log('state complete', this.state)
     return (
       <div>
         <h1>Welcome to {this.state.name}'s Todo App!</h1>
         <TodoList 
-        data = {this.state.Todo} 
+        data = {this.state.filteredList.length >= 1 ? this.state.filteredList : this.state.Todo} 
         toggleTask = {this.toggleTask}
-        clearCompleted = {this.clearCompleted}
+        clearCompleted = {this.clearCompleted}    
+        
         />
         <TodoForm data={this.addTask}/>
+        {/* <Search data = {this.state.Todo}/> */}
+        
+        <div class="search">
+            <input 
+            type="text" 
+            name="task"
+            value={this.state.searchValue}
+            className="input" 
+            onChange= {this.handleSearchChange} 
+            placeholder="Search..." />
+        </div>
       </div>
     );
   }
