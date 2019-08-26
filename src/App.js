@@ -2,7 +2,7 @@ import React from 'react';
 import TodoList from "./components/TodoComponents/TodoList"
 import './components/TodoComponents/Todo.css';
 import TodoForm from "./components/TodoComponents/TodoForm"
-import Search from "./components/TodoComponents/Search"
+
 
 const TodoData = [
   {
@@ -153,15 +153,6 @@ class App extends React.Component {
     return (
       <div>
         <h1>Welcome to {this.state.name}'s Todo App!</h1>
-        <TodoList 
-        data = {this.state.filteredList.length >= 1 ? this.state.filteredList : this.state.Todo} 
-        toggleTask = {this.toggleTask}
-        clearCompleted = {this.clearCompleted}    
-        
-        />
-        <TodoForm data={this.addTask}/>
-        {/* <Search data = {this.state.Todo}/> */}
-        
         <div class="search">
             <input 
             type="text" 
@@ -171,6 +162,15 @@ class App extends React.Component {
             onChange= {this.handleSearchChange} 
             placeholder="Search..." />
         </div>
+        <TodoList 
+        data = {this.state.filteredList.length >= 1 ? this.state.filteredList : this.state.Todo} 
+        toggleTask = {this.toggleTask}
+        clearCompleted = {this.clearCompleted}    
+        
+        />
+        <TodoForm data={this.addTask}/>
+        
+        
       </div>
     );
   }

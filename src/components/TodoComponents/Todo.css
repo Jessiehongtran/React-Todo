@@ -95,3 +95,11 @@ button {
     margin-left: 10px;
 }
 
+input{
+  background-color: white;
+  border: 1px solid white;
+  color: tomato;
+  font-size: 16px;
+  padding: 6px 14px;
+  margin-left: 10px;
+}

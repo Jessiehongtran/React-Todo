@@ -8,7 +8,7 @@ class TodoForm extends React.Component {
             task: ''
         };
         // console.log(this.state)
-        // console.log('props', props)
+        console.log('props', props)
         
     }
 
